@@ -1,0 +1,4 @@
+Usage:
+```
+python3 labscan.py -i 172.16.13.181 -np
+```

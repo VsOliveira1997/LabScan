@@ -31,7 +31,7 @@ def main():
     parser.add_argument("-i", "--ip", required=True)
     parser.add_argument("-d", "--dir", action="store_true", help="Change Path for save DIR")
     parser.add_argument("-rs", "--rust-scan", action="store_true", help="Rust scan mode")
-    parser.add_argument("-ns", "--nmap-scan", action="store_true", help="Nmap mode")
+    parser.add_argument("-np", "--nmap-scan", action="store_true", help="Nmap mode")
 
 
     args = parser.parse_args()
