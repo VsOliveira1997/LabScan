@@ -5,8 +5,7 @@ import requests
 class Helpers:
     @staticmethod
     def create_folder(pathdir):
-        path_mac = '/Users/vitoroliveira/Desktop/'
-        path_kali = '/home/kali/Desktop/'
+
 
         try:
             check = os.popen("uname -a").read()
