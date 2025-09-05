@@ -2,23 +2,21 @@
 # TODO Se for Windows, rodar o basico de enumeração no AD
 # TODO Testear em host que não tem ip na maquina
 # TODO Colocar o path como env para não ter que digitar todas as vezes
-
-
-from Scan import Scan
+from Utils.Config import Config
+from Utils.Scan import Scan
 from argparse import ArgumentParser, RawTextHelpFormatter
 
 
 def print_banner():
-    banner = r"""
-██╗      █████╗ ██████   ███████╗ ██████╗  █████╗ ███╗  ██╗
-██║     ██╔══██╗██╔══██  ██╔════╝ ██╔════╝██╔══██╗████╗ ██║
-██║     ███████║██████   ███████  ██║     ███████║██╔██╗██║
-██║     ██╔══██║██╔══██       ██  ██║     ██╔══██║██║╚████║
-███████╗██║  ██║██████║  ███████╗ ██████╗ ██║  ██║██║ ╚███║
-╚══════╝╚═╝  ╚═╝╚═════╝  ╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚══╝
-"""
-
-    print(banner)
+        banner = r"""
+    ██╗      █████╗ ██████   ███████╗ ██████╗  █████╗ ███╗  ██╗
+    ██║     ██╔══██╗██╔══██  ██╔════╝ ██╔════╝██╔══██╗████╗ ██║
+    ██║     ███████║██████   ███████  ██║     ███████║██╔██╗██║
+    ██║     ██╔══██║██╔══██       ██  ██║     ██╔══██║██║╚████║
+    ███████╗██║  ██║██████║  ███████╗ ██████╗ ██║  ██║██║ ╚███║
+    ╚══════╝╚═╝  ╚═╝╚═════╝  ╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚══╝
+    """
+        print(banner)
 
 def main():
     print_banner()
@@ -31,12 +29,15 @@ def main():
         formatter_class=RawTextHelpFormatter
     )
     parser.add_argument("-i", "--ip", required=True)
-    parser.add_argument("-d", "--dir", required=True)
+    parser.add_argument("-d", "--dir", action="store_true", help="Change Path for save DIR")
     parser.add_argument("-rs", "--rust-scan", action="store_true", help="Rust scan mode")
     parser.add_argument("-ns", "--nmap-scan", action="store_true", help="Nmap mode")
 
+
     args = parser.parse_args()
-    recom = Scan(args.ip, args.dir)
+    if args.dir:
+        Config(args.dir)
+    recom = Scan(args.ip)
 
 
     print(f"\033[92m[*] Iniciando o recon\033[0m")

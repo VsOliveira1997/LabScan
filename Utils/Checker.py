@@ -1,29 +1,17 @@
 import os
 import requests
+from Utils.Config import Config
 
-
-class Helpers:
+class Check:
     @staticmethod
-    def create_folder(pathdir):
-
-
+    def create_folder():
         try:
-            check = os.popen("uname -a").read()
-
-            if "Darwin" in check:
-                    path = os.system(f"mkdir {path_mac}/{name}")
-                    if path == 256:
-                        print("\033[93m[*] Diretorio ja existe\033[0m")
-                    else:
-                        print(f"\033[92m[*] Diretorio criado com Sucesso! em {path_mac}\033[0m")
-                    return f'{path_mac}{name}'# Verde
+            path = Config(path=None).get_path()
+            path = os.system(f"mkdir {path}")
+            if path == 256:
+                print("\033[93m[*] Diretorio ja existe\033[0m")
             else:
-                path = os.system(f"mkdir {path_kali}{name}")
-                if path == 256:
-                    print("\033[93m[*] Diretorio ja existe\033[0m")
-                else:
-                    print(f"\033[92m[*] Diretorio criado com Sucesso! em {path_kali}\033[0m")  # Verde
-                    return f"{path_kali}{name}"
+                print(f"\033[92m[*] Diretorio criado com Sucesso! em {path}\033[0m")
         except Exception as e:
             print(e)
 
